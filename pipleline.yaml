@@ -1,0 +1,40 @@
+# dev/myapp/k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: myapp-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: thebestever535/pipelinetest:latest   # <- CI will update this tag
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
+---
+# dev/myapp/k8s/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+  namespace: myapp-dev
+spec:
+  selector:
+    app: myapp
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+
