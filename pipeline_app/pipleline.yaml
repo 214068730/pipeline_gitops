@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: thebestever535/pipelinetest:latest   # <- CI will update this tag
+          image: thebestever535/pipelinetest:c2accc7966bc009dc0ebc6cae647cd2c4603d8ad
           ports:
             - containerPort: 8080
           env:
