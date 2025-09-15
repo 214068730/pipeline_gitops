@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: thebestever535/pipelinetest:53ae030
+          image: thebestever535/pipelinetest:78e05de
           ports:
             - containerPort: 8080
           env:
